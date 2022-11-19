@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    image: gemini/api
+    restart: always
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    networks:
+      - postgres_network
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:14.1-alpine
+    restart: always
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - postgres_network
+
+volumes:
+  postgres:
+    driver: local
+
+networks:
+  postgres_network:
