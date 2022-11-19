@@ -1,5 +1,4 @@
-import { Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from 'typeorm'
-import { UniswapV3Swap } from './uniswapV3.entity'
+import { Column, Entity, PrimaryColumn } from 'typeorm'
 
 @Entity()
 export class Token {
