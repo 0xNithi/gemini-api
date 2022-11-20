@@ -4,6 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 
 import appConfig from './config/app.config'
 import databaseConfig from './config/database.config'
+import { EventModule } from './event/event.module'
+import { SyncModule } from './sync/sync.module'
 import { TokenModule } from './token/token.module'
 
 @Module({
@@ -33,6 +35,8 @@ import { TokenModule } from './token/token.module'
       }),
     }),
     TokenModule,
+    SyncModule,
+    EventModule,
   ],
 })
 export class AppModule {}
